@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gato Café</title>
+  <link rel="icon" href="assets/images/logo/gato-logo.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="nav-container">
+    <div class="navbar-content">
+
+      <!-- Logo + Café Name -->
+      <div class="cafe-name">
+        <a href="#">
+          <img class="hoverable" id="gato-logo"
+               alt="Gato Café Logo"
+               src="assets/images/logo/gato-logo.png"
+               width="48" height="48"/>
+        </a>
+        <h2 class="color-change-text" id="gato-cafe">Gato Café</h2>
+      </div>
+
+      <!-- Nav Links -->
+      <div class="nav-links">
+        <ul>
+         <li class="underline-slide nav-item"><a href="#">About</a></li>
+         <li class="underline-slide nav-item"><a href="#">Menu</a></li>
+         <li class="underline-slide nav-item"><a href="#">Order</a></li>
+        </ul>
+      </div>
+
+      <!-- Icon buttons -->
+      <div class="icons">
+        
+        <!-- Download Menu -->
+        <button class="icon-btn">
+          <a href="#">
+            <img class="hoverable" id="download-menu-icon"
+                 alt="Download Menu"
+                 src="assets/images/ui/download-menu-icon.png"
+                 width="38" height="38"/>
+            <span class="tooltip">Download Menu</span>
+          </a>
+        </button>
+
+        <!-- Play Game -->
+        <button class="icon-btn">
+          <a href="#">
+            <img class="hoverable" id="game-icon"
+                 alt="Play Game"
+                 src="assets/images/ui/game-icon.png"
+                 width="32" height="32"/>
+            <span class="tooltip">Play Game</span>
+            <span class="floating-badge">Soon!</span>
+          </a>
+        </button>
+
+        <!-- Music -->
+        <button class="icon-btn" onclick="toggleMusic()">
+
+          <!-- Off state -->
+          <img class="hoverable" id="music-off-icon"
+               alt="Music Off"
+               src="assets/images/ui/music-off-icon.png"
+               width="36" height="42"/>
+
+          <!-- On state -->
+          <img class="hoverable" id="music-on-icon"
+               alt="Music On"
+               src="assets/images/ui/music-on-icon.png"
+               width="36" height="42" style="display: none;"/>
+
+          <!-- Initial state label -->
+          <span class="tooltip" id="label">Music Off</span>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Footer -->
+  <footer class="footer-container">
+    <div class="footer-content">
+      <p id="thanks">Thanks for visiting!</p>
+      <p id="credits">Made with love by <a class="underline-slide" href="https://www.codedex.io/@sh3rqxs" target="_blank">@shercodes</a></p>
+      <a href="https://github.com/sh3rqxs" target="_blank">
+        <img class="color-change-img"
+             id="github-profile"
+             alt="GitHub Profile"
+             src="assets/images/social-media/github-profile-icon.svg"
+             width="32" height="32"/>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Background music -->
+  <audio id="bg-music" loop>
+    <source src="assets/music/11 - sweet cafe.mp3" type="audio/mpeg"/>
+  </audio>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
