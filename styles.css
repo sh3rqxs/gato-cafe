@@ -1,0 +1,350 @@
+/* ============================================================
+   TABLE OF CONTENTS
+   1. Reset
+   2. Variables (Color Palette)
+   3. Fonts
+   4. Body
+   5. Animations
+   6. Navbar
+      6a. Logo
+      6b. Nav Links
+      6c. Icons
+   . Footer
+   . Media Queries
+   ============================================================ */
+
+
+/* ============================================================
+   1. RESET
+   ============================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   2. VARIABLES (Color Palette)
+   ============================================================ */
+
+:root {
+  /* White */
+  --vanilla-foam: #ffffff;
+
+  /* Pinks */
+  --blush-rose: #FADADD;
+  --cotton-candy: #F9C4D2;
+  --petal-pink: #F4A7B9;
+  --soft-raspberry: #C8657C;
+
+  /* Yellows */
+  --buttercream: #FFF3CC;
+  --lemon-curd: #FFE48A;
+
+  /* Browns */
+  --caramel-sand: #D4B49A;
+  --terracotta-dust: #C49A7A;
+  --mocha-latte: #6B4226;
+}
+
+
+/* ============================================================
+   3. FONTS
+   ============================================================ */
+
+/* Primary Font */
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("assets/fonts/PressStart2P.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Secondary Font */
+@font-face {
+  font-family: "Varela Round";
+  src: url("assets/fonts/VarelaRound-Regular.woff2") format("woff2");
+  font-style: normal;
+}
+
+
+/* ============================================================
+   4. BODY
+   ============================================================ */
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--buttercream);
+}
+
+/* Rendering for images */
+img {
+  image-rendering: crisp-edges;
+}
+
+
+/* ============================================================
+   5. ANIMATIONS
+   ============================================================ */
+
+/* Glow on + bounce for interactive icons/logo */
+.hoverable {
+  transition: filter 0.2s ease;
+}
+.hoverable:hover {
+  filter: drop-shadow(0 0 6px var(--soft-raspberry));
+  animation: bounce 0.5s ease;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+
+/* Underline slide for links */
+.underline-slide {
+  position: relative;
+}
+.underline-slide::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.5s ease;
+}
+.underline-slide:hover {
+  color: var(--soft-raspberry);
+}
+.underline-slide:hover::after {
+  width: 100%;
+}
+
+/* Color change hover for icons */
+.color-change-text {
+  color: var(--mocha-latte);
+  transition: color 0.3s ease;
+}
+.color-change-text:hover {
+  color: var(--soft-raspberry);
+}
+
+.color-change-img {
+  filter: invert(27%) sepia(22%) saturate(800%) hue-rotate(345deg) brightness(90%) contrast(90%);
+  transition: filter 0.3s ease;
+}
+.color-change-img:hover {
+  filter: invert(57%) sepia(40%) saturate(600%) hue-rotate(300deg) brightness(95%) contrast(90%);
+}
+
+/* Tooltip hover for icon labels */
+.icon-btn {
+  position: relative;
+  background: none;
+  border: none;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--soft-raspberry);
+  color: var(--vanilla-foam);
+  padding: 3px 9px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: "Varela Round";
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.icon-btn:hover .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Floating badge */
+.floating-badge {
+  position: absolute;
+  top: -6px; right: -18px;
+  background: var(--mocha-latte);
+  color: var(--vanilla-foam);
+  padding: 2px 6px;
+  border-radius: 12px;
+  font-size: 8.8px;
+  font-weight: 700;
+  font-family: "Varela Round";
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+
+/* ============================================================
+   6. NAVBAR
+   ============================================================ */
+
+.nav-container {
+  position: sticky;
+  top: 0;
+  background-color: var(--lemon-curd);
+  border-bottom: 2px solid #d4b59ba6;
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  padding: 0.46875rem 3.75rem;
+}
+
+/* --- 6a. Logo --- */
+
+.cafe-name {
+  display: flex;
+  align-items: center;
+  gap: 0.9375rem;
+  font-family: "Press Start 2P";
+}
+
+#gato-logo {
+  width: auto;
+  max-height: 48px;
+}
+
+#gato-cafe {
+  font-weight: normal;
+  font-size: 1.65rem;
+  letter-spacing: -0.1em;
+}
+
+/* --- 6b. Nav Links --- */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  padding: 0 3.75rem;
+  font-family: "Varela Round";
+  color: var(--mocha-latte);
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 3.75rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-item {
+  font-weight: 700;
+  font-size: 1.2rem;
+  position: relative;
+}
+
+/* --- 6c. Icons --- */
+
+.icons {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 3.75rem;
+}
+
+#download-menu-icon {
+  width: auto;
+  max-height: 38px;
+}
+
+#game-icon {
+  width: auto;
+  max-height: 32px;
+}
+
+#music-off-icon #music-on-icon {
+  width: auto;
+  max-height: 42px;
+  transition: opacity 0.2s ease;
+}
+
+#music-on-icon {
+  display: none;
+  opacity: 0;
+}
+
+
+/* ============================================================
+   . FOOTER
+   ============================================================ */
+
+.footer-container {
+  margin-top: auto;
+  
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--lemon-curd);
+  border-top: 2px solid #d4b59ba6;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1.875rem 3.75rem;
+}
+
+#thanks {
+  padding-bottom: 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: "Varela Round";
+  color: var(--mocha-latte);
+}
+
+#credits {
+  padding-bottom: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Varela Round";
+  color: var(--mocha-latte);
+}
+
+.footer-content p a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#github-profile {
+  width: auto;
+  max-height: 32px;
+}
+
+
+/* ============================================================
+   . MEDIA QUERIES
+   ============================================================ */
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
