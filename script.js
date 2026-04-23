@@ -1,30 +1,82 @@
 // Background music
 function toggleMusic() {
   const audio = document.getElementById("bg-music");
-  const music_off = document.getElementById("music-off-icon");
-  const music_on = document.getElementById("music-on-icon");
+  const offState = document.getElementById("music-off-icon");
+  const onState = document.getElementById("music-on-icon");
   const label = document.getElementById("label")
 
-  audio.volume = 0.25; // 25% volume
+  // Audio volume
+  audio.volume = 0.25; // 25%
 
-  if (audio.paused) { // Turns on the audio
+  if (audio.paused) {
+    // Turn on the audio
     audio.play();
-    music_off.style.opacity = "0";
+    offState.style.opacity = "0";
     setTimeout(() => {
-      music_off.style.display = "none";
-      music_on.style.display = "inline";
-      setTimeout(() => music_on.style.opacity = "1", 10);
+      offState.style.display = "none";
+      onState.style.display = "inline";
+      setTimeout(() => onState.style.opacity = "1", 10);
     }, 200); 
     label.textContent = "Music On";
 
-  } else { // Turns off the audio
+  } else {
+    // Turn off the audio
     audio.pause();
-    music_on.style.opacity = "0";
+    onState.style.opacity = "0";
     setTimeout(() => {
-      music_off.style.display = "inline";
-      music_on.style.display = "none"; 
-      setTimeout(() => music_off.style.opacity = "1", 10);
+      offState.style.display = "inline";
+      onState.style.display = "none"; 
+      setTimeout(() => offState.style.opacity = "1", 10);
     }, 200);
     label.textContent = "Music Off";
   }
 } 
+
+
+/* ===========================================================
+    HERO
+   =========================================================== */
+
+// Intro tagline - typing animation
+const phrases = ["Welcome to", "Sip, stay and be loved. ♡", "Every sip comes with a purr at"];
+const typingText = document.getElementById("typing-text");
+const cursor = document.getElementById("cursor");
+
+let phrasesIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function type() {
+  const currentPhrase = phrases[phrasesIndex];
+
+  if (!isDeleting) {
+    // Type foward
+    typingText.textContent = currentPhrase.slice(0, charIndex + 1);
+    charIndex++;
+
+    if (charIndex === currentPhrase.length) {
+      // Pause at the end before deleting
+      setTimeout(() => { isDeleting = true; type(); }, 1800);
+      return;
+    }
+
+  } else {
+    // Delete backward
+    typingText.textContent = currentPhrase.slice(0, charIndex - 1);
+    charIndex--;
+
+    if (charIndex === 0) {
+      isDeleting = false;
+      phrasesIndex =(phrasesIndex + 1) % phrases.length
+
+      // Pause before typing next phrase
+      setTimeout(type, 600);
+      return;
+    }
+  }
+
+  // Typing speed
+  setTimeout(type, isDeleting ? 60 : 100);
+}
+
+type();
