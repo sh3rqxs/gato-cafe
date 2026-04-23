@@ -1,32 +1,5 @@
 /* ============================================================
-   TABLE OF CONTENTS
-   1. Reset
-   2. Variables (Color Palette)
-   3. Fonts
-   4. Body
-   5. Animations
-   6. Navbar
-      6a. Logo
-      6b. Nav Links
-      6c. Icons
-   . Footer
-   . Media Queries
-   ============================================================ */
-
-
-/* ============================================================
-   1. RESET
-   ============================================================ */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
-/* ============================================================
-   2. VARIABLES (Color Palette)
+   1. VARIABLES (Color Palette)
    ============================================================ */
 
 :root {
@@ -51,18 +24,17 @@
 
 
 /* ============================================================
-   3. FONTS
+   2. FONTS
    ============================================================ */
 
-/* Primary Font */
+/* Primary font */
 @font-face {
   font-family: "Press Start 2P";
   src: url("assets/fonts/PressStart2P.woff2") format("woff2");
-  font-weight: 400;
   font-style: normal;
 }
 
-/* Secondary Font */
+/* Secondary font */
 @font-face {
   font-family: "Varela Round";
   src: url("assets/fonts/VarelaRound-Regular.woff2") format("woff2");
@@ -71,28 +43,87 @@
 
 
 /* ============================================================
-   4. BODY
+   3. RESET
    ============================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6.5rem;
+}
 
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
   margin: 0;
+  padding: 0;
+  font-family: "Varela Round";
   background-color: var(--buttercream);
 }
 
-/* Rendering for images */
 img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
   image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+h1, h2 {
+  font-family: "Press Start 2P";
+  font-weight: inherit;
+  font-size: inherit;
+  letter-spacing: -0.1em;
+  color: var(--mocha-latte);
+}
+
+p {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--mocha-latte);
+}
+
+a {
+  font-weight: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+button a {
+  font-family: "Press Start 2P";
+  text-decoration: none;
+  color: inherit;
 }
 
 
 /* ============================================================
-   5. ANIMATIONS
+   4. ANIMATIONS
    ============================================================ */
 
-/* Glow on + bounce for interactive icons/logo */
+/* Glow on + bounce for interactive logo/icons */
 .hoverable {
   transition: filter 0.2s ease;
 }
@@ -110,8 +141,8 @@ img {
   position: relative;
 }
 .underline-slide::after {
-  content: '';
   position: absolute;
+  content: '';
   bottom: -2px;
   left: 0;
   width: 0;
@@ -146,205 +177,260 @@ img {
 /* Tooltip hover for icon labels */
 .icon-btn {
   position: relative;
-  background: none;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
+  background: none;
 }
 
 .tooltip {
   position: absolute;
   bottom: -28px;
   left: 50%;
-  transform: translateX(-50%) translateY(4px);
-  background: var(--soft-raspberry);
-  color: var(--vanilla-foam);
-  padding: 3px 9px;
+  transform: translateX(-50%) translateY(1px);
+  padding: 0.15rem 0.6rem;
   border-radius: 12px;
-  font-size: 12px;
-  font-weight: 700;
   font-family: "Varela Round";
+  font-weight: 600;
+  font-size: clamp(0.25rem, 0.785vw + 0.843rem, 0.8rem);
+  letter-spacing: 0.03em;
+  color: var(--vanilla-foam);
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
+  background: var(--soft-raspberry);
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
 .icon-btn:hover .tooltip {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  transform: translateX(-50%) translateY(1px);
 }
 
-/* Floating badge */
-.floating-badge {
-  position: absolute;
-  top: -6px; right: -18px;
-  background: var(--mocha-latte);
-  color: var(--vanilla-foam);
-  padding: 2px 6px;
-  border-radius: 12px;
-  font-size: 8.8px;
-  font-weight: 700;
-  font-family: "Varela Round";
+/* Blink cursor animation */
+#cursor {
+  animation: blink 0.7s step-end infinite;
+  font-weight: 300;
+  color: var(--soft-raspberry);
 }
-@keyframes pulse {
+@keyframes blink {
   0%, 100% { opacity: 1; }
-  50%       { opacity: 0.55; }
+  50%       { opacity: 0; }
 }
-
 
 /* ============================================================
-   6. NAVBAR
+   5 . NAVBAR
    ============================================================ */
+
 
 .nav-container {
   position: sticky;
   top: 0;
+  z-index: 100;
+  width: 100%;
+  border-bottom: 2.5px solid var(--caramel-sand);
   background-color: var(--lemon-curd);
-  border-bottom: 2px solid #d4b59ba6;
+ }
+
+.nav-content {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0.5rem clamp(1rem, 3.93vw + 0.214rem, 3.75rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(1rem, 3.93vw + 0.214rem, 3.75rem);;
+  
 }
 
-.navbar-content {
+/* Logo + Café Name */
+
+.logo-container {
   display: flex;
   align-items: center;
-  padding: 0.46875rem 3.75rem;
+  gap: 1rem;
 }
 
-/* --- 6a. Logo --- */
+#logo {
+  width: 44px;
+  height: auto;
+}
 
-.cafe-name {
-  display: flex;
-  align-items: center;
-  gap: 0.9375rem;
+#cafe-name {
+  font-size: clamp(0.75rem, 1.43vw + 0.714rem, 1.75rem);
   font-family: "Press Start 2P";
 }
 
-#gato-logo {
-  width: auto;
-  max-height: 48px;
-}
+/* Nav Links */
 
-#gato-cafe {
-  font-weight: normal;
-  font-size: 1.65rem;
-  letter-spacing: -0.1em;
-}
-
-/* --- 6b. Nav Links --- */
-
-.nav-links {
+.links-container {
   display: flex;
   align-items: center;
-  padding: 0 3.75rem;
-  font-family: "Varela Round";
-  color: var(--mocha-latte);
 }
 
 nav ul {
   display: flex;
   align-items: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  gap: 3.75rem;
+  gap: clamp(1rem, 3.93vw + 0.214rem, 3.75rem);;
 }
 
-nav a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.nav-item {
+.nav-link {
+  font-family: "Varela Round";
   font-weight: 700;
-  font-size: 1.2rem;
-  position: relative;
+  font-size: clamp(0.75rem, 0.714vw + 0.857rem, 1.25rem);
+  letter-spacing: 0.02em;
+  color: var(--mocha-latte);
 }
 
-/* --- 6c. Icons --- */
+/* Nav Icons */
 
-.icons {
+.icons-container {
   display: flex;
   align-items: center;
   margin-left: auto;
-  gap: 3.75rem;
+  gap: 3.5rem;
+}
+
+.icon-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #download-menu-icon {
-  width: auto;
-  max-height: 38px;
+  width: 39px;
+  height: auto;
 }
 
 #game-icon {
-  width: auto;
-  max-height: 32px;
+  width: 43px;
+  height: auto;
 }
 
-#music-off-icon #music-on-icon {
-  width: auto;
-  max-height: 42px;
-  transition: opacity 0.2s ease;
+#music-off-icon, #music-on-icon {
+  width: 32px;
+  height: auto;
 }
 
-#music-on-icon {
-  display: none;
-  opacity: 0;
+
+/* ============================================================
+   6. HERO
+   ============================================================ */
+
+.hero-container {
+  flex: 1;
+  background-color: var(--blush-rose);
 }
 
+.hero-content {
+  padding: clamp(1rem, 3.93vw + 0.214rem, 3.75rem);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(1rem, 3.57vw + 0.286rem, 3.5rem);
+}
+
+/* Hero Text */
+
+.hero-text {
+  display: grid;
+  align-items: center;
+  gap: clamp(1rem, 3.57vw + 0.286rem, 3.5rem);
+}
+
+#intro-tagline {
+  min-height: 2.5rem;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 2rem;
+  color: var(--soft-raspberry);
+}
+
+#gato-cafe {
+  font-size: clamp(1rem, 5.36vw + 0.072rem, 4.75rem);
+  text-shadow: 4px 4px 0 var(--terracotta-dust);
+}
+
+#about {
+  font-size: 1.5rem;
+}
+
+/* Hero Buttons */
+
+.hero-btns {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cta-btn {
+  margin: 0;
+  padding: 1rem 1.5rem;
+  border: 3px solid var(--mocha-latte);
+  box-shadow: 4px 4px 0 var(--mocha-latte);
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+
+}
+
+#primary-btn {
+  color: var(--vanilla-foam);
+  background-color: var(--soft-raspberry);
+}
+
+#secondary-btn {
+  color: var(--mocha-latte);
+  background-color: var(--caramel-sand);
+}
+
+/* Hero Image */
+
+.hero-image {
+  grid-row: 1 / 3;
+  grid-column: 2;
+}
 
 /* ============================================================
    . FOOTER
    ============================================================ */
 
 .footer-container {
-  margin-top: auto;
-  
-  position: sticky;
-  bottom: 0;
   width: 100%;
+  margin-top: auto;
+  border: 2.5px solid var(--caramel-sand);
   background-color: var(--lemon-curd);
-  border-top: 2px solid #d4b59ba6;
 }
 
 .footer-content {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem clamp(1rem, 3.93vw + 0.214rem, 3.75rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  padding: 1.875rem 3.75rem;
+  gap: 0.5rem;
 }
 
 #thanks {
-  padding-bottom: 0.75rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-  font-family: "Varela Round";
-  color: var(--mocha-latte);
+  font-weight: 600;
+  font-size: clamp(0.75rem, 0.714vw + 0.857rem, 1.25rem);
 }
 
 #credits {
-  padding-bottom: 0.75rem;
   font-size: 1rem;
-  font-weight: 500;
-  font-family: "Varela Round";
-  color: var(--mocha-latte);
-}
-
-.footer-content p a {
-  text-decoration: none;
-  color: inherit;
 }
 
 #github-profile {
-  width: auto;
-  max-height: 32px;
+  width: 32px;
+  height: auto;
 }
-
 
 /* ============================================================
    . MEDIA QUERIES
    ============================================================ */
 
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-}
