@@ -4,45 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gato Café</title>
-  <link rel="icon" href="assets/images/logo/gato-logo.png" type="image/png">
+  <link rel="icon" href="assets/images/logo/gato-logo.svg" type="image/svg">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <!-- Navbar -->
   <nav class="nav-container">
-    <div class="navbar-content">
+    <div class="nav-content">
 
       <!-- Logo + Café Name -->
-      <div class="cafe-name">
+      <div class="logo-container">
         <a href="#">
-          <img class="hoverable" id="gato-logo"
-               alt="Gato Café Logo"
-               src="assets/images/logo/gato-logo.png"
-               width="48" height="48"/>
+          <img class="hoverable" id="logo"
+               alt="Logo"
+               src="assets/images/logo/gato-logo.svg"
+               width="44" height="44"
+               loading="eager"/>
         </a>
-        <h2 class="color-change-text" id="gato-cafe">Gato Café</h2>
+        <h2 class="color-change-text" id="cafe-name">Gato Café</h2>
       </div>
 
       <!-- Nav Links -->
-      <div class="nav-links">
+      <div class="links-container">
         <ul>
-         <li class="underline-slide nav-item"><a href="#">About</a></li>
-         <li class="underline-slide nav-item"><a href="#">Menu</a></li>
-         <li class="underline-slide nav-item"><a href="#">Order</a></li>
+         <li class="underline-slide nav-link"><a href="#about-section">About</a></li>
+         <li class="underline-slide nav-link"><a href="#">Menu</a></li>
+         <li class="underline-slide nav-link"><a href="#">Order</a></li>
         </ul>
       </div>
 
-      <!-- Icon buttons -->
-      <div class="icons">
+      <!-- Nav Icons -->
+      <div class="icons-container">
         
         <!-- Download Menu -->
         <button class="icon-btn">
           <a href="#">
             <img class="hoverable" id="download-menu-icon"
                  alt="Download Menu"
-                 src="assets/images/ui/download-menu-icon.png"
-                 width="38" height="38"/>
+                 src="assets/images/ui/download-menu-icon.svg"
+                 width="39" height="36"
+                 loading="eager"/>
             <span class="tooltip">Download Menu</span>
           </a>
         </button>
@@ -52,35 +54,69 @@
           <a href="#">
             <img class="hoverable" id="game-icon"
                  alt="Play Game"
-                 src="assets/images/ui/game-icon.png"
-                 width="32" height="32"/>
+                 src="assets/images/ui/game-icon.svg"
+                 
+                width="43" height="36"
+                 loading="eager"/>
             <span class="tooltip">Play Game</span>
-            <span class="floating-badge">Soon!</span>
           </a>
         </button>
 
         <!-- Music -->
         <button class="icon-btn" onclick="toggleMusic()">
 
-          <!-- Off state -->
+          <!-- Off State -->
           <img class="hoverable" id="music-off-icon"
                alt="Music Off"
-               src="assets/images/ui/music-off-icon.png"
-               width="36" height="42"/>
+               src="assets/images/ui/music-off-icon.svg"
+               width="32" height="36"
+               loading="eager"/>
 
-          <!-- On state -->
+          <!-- On State -->
           <img class="hoverable" id="music-on-icon"
                alt="Music On"
-               src="assets/images/ui/music-on-icon.png"
-               width="36" height="42" style="display: none;"/>
+               src="assets/images/ui/music-on-icon.svg"
+               width="30" height="34"
+               style="display: none;"
+               loading="eager"/>
 
-          <!-- Initial state label -->
+          <!-- Initial State Label -->
           <span class="tooltip" id="label">Music Off</span>
         </button>
       </div>
 
     </div>
   </nav>
+
+  <!-- Hero -->
+  <header class="hero-container" id="about-section">
+    <section class="hero-content">
+
+      <!-- Hero Text --> 
+      <div class="hero-text">
+        <p id="intro-tagline"><span id="typing-text">Loading...</span>
+                              <span id="cursor">|</span></p>
+        <h1 id="gato-cafe">Gato Café</h1>
+        <p id="about">A quiet corner for people who love cats, coffee,
+                      and slow mornings. Come as you are. Stay as long 
+                      as you like!</p>
+      </div>
+
+      <!-- Hero Buttons -->
+      <div class="hero-btns">
+        <button class="cta-btn" id="primary-btn"><a href="#">Browse Menu ▶</a></button>
+        <button class="cta-btn" id="secondary-btn"><a href="#">Place an Order</a></button>
+      </div>
+      
+      <!-- Hero Image -->
+      <div class="hero-image">
+        <img alt="Image"
+             src="assets/images/hero-illustration/gato-placeholder.png"
+             width="600" height="282"
+             loading="eager"/>
+      </div>
+    </section>
+  </header>
 
   <!-- Footer -->
   <footer class="footer-container">
@@ -97,7 +133,7 @@
     </div>
   </footer>
 
-  <!-- Background music -->
+  <!-- Background Music -->
   <audio id="bg-music" loop>
     <source src="assets/music/11 - sweet cafe.mp3" type="audio/mpeg"/>
   </audio>
