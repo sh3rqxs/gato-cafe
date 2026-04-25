@@ -1,3 +1,7 @@
+/* ===========================================================
+    MUSIC/SOUNDS
+   =========================================================== */
+
 // Background music
 function toggleMusic() {
   const audio = document.getElementById("bg-music");
@@ -37,8 +41,8 @@ function toggleMusic() {
     HERO
    =========================================================== */
 
-// Intro tagline - typing animation
-const phrases = ["Welcome to", "Sip, stay and be loved. ♡", "Every sip comes with a purr at"];
+// Intro tagline (typing animation)
+const phrases = ["Welcome to", "Sip, stay and be loved."];
 const typingText = document.getElementById("typing-text");
 const cursor = document.getElementById("cursor");
 

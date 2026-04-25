@@ -1,5 +1,5 @@
 /* ============================================================
-   1. VARIABLES (Color Palette)
+   VARIABLES (Color Palette)
    ============================================================ */
 
 :root {
@@ -24,7 +24,7 @@
 
 
 /* ============================================================
-   2. FONTS
+   FONTS
    ============================================================ */
 
 /* Primary font */
@@ -43,7 +43,7 @@
 
 
 /* ============================================================
-   3. RESET
+   RESET
    ============================================================ */
 
 * {
@@ -54,29 +54,28 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 6.5rem;
+  scroll-padding-top: 60px;
 }
 
 body {
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
-  line-height: 1.5;
-  -webkit-text-size-adjust: 100%;
-  margin: 0;
-  padding: 0;
   font-family: "Varela Round";
   background-color: var(--buttercream);
 }
 
 img {
-  display: block;
   width: 100%;
   max-width: 100%;
   height: auto;
+  margin: 0 auto;
+  display: block;
   object-fit: cover;
   image-rendering: crisp-edges;
   image-rendering: pixelated;
@@ -86,13 +85,13 @@ h1, h2 {
   font-family: "Press Start 2P";
   font-weight: inherit;
   font-size: inherit;
-  letter-spacing: -0.1em;
+  letter-spacing: -3px;
   color: var(--mocha-latte);
 }
 
 p {
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-weight: normal;
+  letter-spacing: 1px;
   color: var(--mocha-latte);
 }
 
@@ -120,33 +119,36 @@ button a {
 
 
 /* ============================================================
-   4. ANIMATIONS
+   ANIMATIONS
    ============================================================ */
 
-/* Glow on + bounce for interactive logo/icons */
-.hoverable {
+/* Glow on + bounce */
+
+.glow-on-bounce {
   transition: filter 0.2s ease;
 }
-.hoverable:hover {
-  filter: drop-shadow(0 0 6px var(--soft-raspberry));
-  animation: bounce 0.5s ease;
+.glow-on-bounce:hover {
+  filter: drop-shadow(0 0 5px var(--soft-raspberry));
+  animation: bounce 0.6s ease;
 }
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-4px); }
+  50%       { transform: translateY(-5px); }
 }
 
-/* Underline slide for links */
+/* Underline slide */
+
 .underline-slide {
   position: relative;
 }
 .underline-slide::after {
   position: absolute;
   content: '';
-  bottom: -2px;
+  bottom: -4px;
   left: 0;
   width: 0;
   height: 2px;
+  border-radius: 12px;
   background: currentColor;
   transition: width 0.5s ease;
 }
@@ -157,7 +159,10 @@ button a {
   width: 100%;
 }
 
-/* Color change hover for icons */
+/* Color change */
+
+/* Text */
+
 .color-change-text {
   color: var(--mocha-latte);
   transition: color 0.3s ease;
@@ -165,6 +170,8 @@ button a {
 .color-change-text:hover {
   color: var(--soft-raspberry);
 }
+
+/* Image */
 
 .color-change-img {
   filter: invert(27%) sepia(22%) saturate(800%) hue-rotate(345deg) brightness(90%) contrast(90%);
@@ -174,7 +181,8 @@ button a {
   filter: invert(57%) sepia(40%) saturate(600%) hue-rotate(300deg) brightness(95%) contrast(90%);
 }
 
-/* Tooltip hover for icon labels */
+/* badge */
+
 .icon-btn {
   position: relative;
   height: 40px;
@@ -185,17 +193,18 @@ button a {
   background: none;
 }
 
-.tooltip {
+.badge {
   position: absolute;
   bottom: -28px;
   left: 50%;
   transform: translateX(-50%) translateY(1px);
-  padding: 0.15rem 0.6rem;
+  padding: 3px 9px;
+  text-align: center;
   border-radius: 12px;
   font-family: "Varela Round";
-  font-weight: 600;
-  font-size: clamp(0.25rem, 0.785vw + 0.843rem, 0.8rem);
-  letter-spacing: 0.03em;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 1px;
   color: var(--vanilla-foam);
   white-space: nowrap;
   opacity: 0;
@@ -203,12 +212,13 @@ button a {
   background: var(--soft-raspberry);
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
-.icon-btn:hover .tooltip {
+.icon-btn:hover .badge {
   opacity: 1;
   transform: translateX(-50%) translateY(1px);
 }
 
-/* Blink cursor animation */
+/* Blink cursor */
+
 #cursor {
   animation: blink 0.7s step-end infinite;
   font-weight: 300;
@@ -219,29 +229,45 @@ button a {
   50%       { opacity: 0; }
 }
 
-/* ============================================================
-   5 . NAVBAR
-   ============================================================ */
+/* CTA buttons */
 
+.cta-btn:hover {
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0 var(--mocha-latte);
+}
+.cta-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+/* Floating text */
+.floating-text {
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
 
 .nav-container {
   position: sticky;
   top: 0;
   z-index: 100;
-  width: 100%;
   border-bottom: 2.5px solid var(--caramel-sand);
   background-color: var(--lemon-curd);
  }
 
 .nav-content {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0.5rem clamp(1rem, 3.93vw + 0.214rem, 3.75rem);
+  padding: 12px 60px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: clamp(1rem, 3.93vw + 0.214rem, 3.75rem);;
+  gap: 60px;
   
 }
 
@@ -250,17 +276,16 @@ button a {
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 }
 
 #logo {
-  width: 44px;
-  height: auto;
+  width: 40px;
 }
 
 #cafe-name {
-  font-size: clamp(0.75rem, 1.43vw + 0.714rem, 1.75rem);
-  font-family: "Press Start 2P";
+  text-align: left;
+  font-size: 28px;
 }
 
 /* Nav Links */
@@ -273,63 +298,61 @@ button a {
 nav ul {
   display: flex;
   align-items: center;
-  gap: clamp(1rem, 3.93vw + 0.214rem, 3.75rem);;
+  text-align: left;
+  gap: 60px;
 }
 
 .nav-link {
-  font-family: "Varela Round";
-  font-weight: 700;
-  font-size: clamp(0.75rem, 0.714vw + 0.857rem, 1.25rem);
-  letter-spacing: 0.02em;
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 1px;
   color: var(--mocha-latte);
 }
 
 /* Nav Icons */
 
 .icons-container {
+  margin-left: auto;
   display: flex;
   align-items: center;
-  margin-left: auto;
-  gap: 3.5rem;
+  gap: 60px;
 }
 
 .icon-btn {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
 #download-menu-icon {
   width: 39px;
-  height: auto;
 }
 
 #game-icon {
   width: 43px;
-  height: auto;
 }
 
 #music-off-icon, #music-on-icon {
   width: 32px;
-  height: auto;
 }
 
 
 /* ============================================================
-   6. HERO
+   HERO
    ============================================================ */
 
 .hero-container {
-  flex: 1;
   background-color: var(--blush-rose);
 }
 
 .hero-content {
-  padding: clamp(1rem, 3.93vw + 0.214rem, 3.75rem);
+  padding: 60px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: clamp(1rem, 3.57vw + 0.286rem, 3.5rem);
+  grid-template-columns: 1fr auto;
+  gap: 16px 32px;
+}
+
+.hero-text, .hero-btns {
+  padding: 32px;
 }
 
 /* Hero Text */
@@ -337,24 +360,27 @@ nav ul {
 .hero-text {
   display: grid;
   align-items: center;
-  gap: clamp(1rem, 3.57vw + 0.286rem, 3.5rem);
+  gap: 60px;
 }
 
 #intro-tagline {
-  min-height: 2.5rem;
-  line-height: 1;
-  font-weight: 600;
-  font-size: 2rem;
+  text-align: left;
+  font-weight: bold;
+  font-size: 32px;
   color: var(--soft-raspberry);
 }
 
 #gato-cafe {
-  font-size: clamp(1rem, 5.36vw + 0.072rem, 4.75rem);
+  text-align: left;
+  font-size: 72px;
   text-shadow: 4px 4px 0 var(--terracotta-dust);
 }
 
-#about {
-  font-size: 1.5rem;
+#cafe-desc { 
+  width: 600px;
+  text-align: left;
+  font-size: 24px;
+  line-height: 1.75;
 }
 
 /* Hero Buttons */
@@ -362,16 +388,15 @@ nav ul {
 .hero-btns {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 }
 
 .cta-btn {
-  margin: 0;
-  padding: 1rem 1.5rem;
+  padding: 16px 24px;
   border: 3px solid var(--mocha-latte);
-  box-shadow: 4px 4px 0 var(--mocha-latte);
-  font-size: 1rem;
-  letter-spacing: -0.01em;
+  box-shadow: 5px 5px 0 var(--mocha-latte);
+  font-size: 18px;
+  letter-spacing: 1px;
   text-transform: uppercase;
 
 }
@@ -386,51 +411,57 @@ nav ul {
   background-color: var(--caramel-sand);
 }
 
+
 /* Hero Image */
 
 .hero-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   grid-row: 1 / 3;
   grid-column: 2;
 }
 
+#gato {
+  width: 552px;
+}
+
+
+
 /* ============================================================
-   . FOOTER
+   FOOTER
    ============================================================ */
 
 .footer-container {
-  width: 100%;
   margin-top: auto;
   border: 2.5px solid var(--caramel-sand);
   background-color: var(--lemon-curd);
 }
 
 .footer-content {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 1.5rem clamp(1rem, 3.93vw + 0.214rem, 3.75rem);
+  padding: 30px 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  text-align: center;
+  gap: 12px;
 }
 
 #thanks {
-  font-weight: 600;
-  font-size: clamp(0.75rem, 0.714vw + 0.857rem, 1.25rem);
+  font-weight: bold;
+  font-size: 20px;
 }
 
 #credits {
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 #github-profile {
   width: 32px;
-  height: auto;
 }
 
 /* ============================================================
-   . MEDIA QUERIES
+   MEDIA QUERIES
    ============================================================ */
-

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gato Café</title>
-  <link rel="icon" href="assets/images/logo/gato-logo.svg" type="image/svg">
+  <link rel="icon" href="assets/images/logo/paw-logo.svg" type="image/svg">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,10 +16,10 @@
       <!-- Logo + Café Name -->
       <div class="logo-container">
         <a href="#">
-          <img class="hoverable" id="logo"
+          <img class="glow-on-bounce" id="logo"
                alt="Logo"
-               src="assets/images/logo/gato-logo.svg"
-               width="44" height="44"
+               src="assets/images/logo/paw-logo.svg"
+               width="40" height="40"
                loading="eager"/>
         </a>
         <h2 class="color-change-text" id="cafe-name">Gato Café</h2>
@@ -28,9 +28,9 @@
       <!-- Nav Links -->
       <div class="links-container">
         <ul>
-         <li class="underline-slide nav-link"><a href="#about-section">About</a></li>
-         <li class="underline-slide nav-link"><a href="#">Menu</a></li>
-         <li class="underline-slide nav-link"><a href="#">Order</a></li>
+         <li class="nav-link underline-slide"><a href="#about">About</a></li>
+         <li class="nav-link underline-slide"><a href="#menu">Menu</a></li>
+         <li class="nav-link underline-slide"><a href="#order">Order</a></li>
         </ul>
       </div>
 
@@ -38,50 +38,49 @@
       <div class="icons-container">
         
         <!-- Download Menu -->
-        <button class="icon-btn">
+        <button class="icon-btn glow-on-bounce">
           <a href="#">
-            <img class="hoverable" id="download-menu-icon"
+            <img id="download-menu-icon"
                  alt="Download Menu"
                  src="assets/images/ui/download-menu-icon.svg"
                  width="39" height="36"
                  loading="eager"/>
-            <span class="tooltip">Download Menu</span>
+            <span class="badge">Download Menu</span>
           </a>
         </button>
-
+        
         <!-- Play Game -->
-        <button class="icon-btn">
+        <button class="icon-btn glow-on-bounce">
           <a href="#">
-            <img class="hoverable" id="game-icon"
+            <img id="game-icon"
                  alt="Play Game"
                  src="assets/images/ui/game-icon.svg"
-                 
-                width="43" height="36"
+                 width="43" height="36"
                  loading="eager"/>
-            <span class="tooltip">Play Game</span>
+            <span class="badge">Play Game</span>
           </a>
         </button>
 
         <!-- Music -->
-        <button class="icon-btn" onclick="toggleMusic()">
+        <button class="icon-btn glow-on-bounce" onclick="toggleMusic()">
 
           <!-- Off State -->
-          <img class="hoverable" id="music-off-icon"
+          <img id="music-off-icon"
                alt="Music Off"
                src="assets/images/ui/music-off-icon.svg"
                width="32" height="36"
                loading="eager"/>
 
           <!-- On State -->
-          <img class="hoverable" id="music-on-icon"
+          <img id="music-on-icon"
                alt="Music On"
                src="assets/images/ui/music-on-icon.svg"
-               width="30" height="34"
+               width="32" height="36"
                style="display: none;"
                loading="eager"/>
 
           <!-- Initial State Label -->
-          <span class="tooltip" id="label">Music Off</span>
+          <span class="badge" id="label">Music Off</span>
         </button>
       </div>
 
@@ -89,17 +88,17 @@
   </nav>
 
   <!-- Hero -->
-  <header class="hero-container" id="about-section">
+  <header class="hero-container" id="about">
     <section class="hero-content">
 
       <!-- Hero Text --> 
       <div class="hero-text">
         <p id="intro-tagline"><span id="typing-text">Loading...</span>
                               <span id="cursor">|</span></p>
-        <h1 id="gato-cafe">Gato Café</h1>
-        <p id="about">A quiet corner for people who love cats, coffee,
+        <h1 class="floating-text" id="gato-cafe">Gato Café</h1>
+        <p id="cafe-desc">A quiet corner for people who love cats, coffee,
                       and slow mornings. Come as you are. Stay as long 
-                      as you like!</p>
+                      as you like! ♡</p>
       </div>
 
       <!-- Hero Buttons -->
@@ -109,10 +108,11 @@
       </div>
       
       <!-- Hero Image -->
-      <div class="hero-image">
-        <img alt="Image"
-             src="assets/images/hero-illustration/gato-placeholder.png"
-             width="600" height="282"
+      <div class="hero-image glow-on-bounce">
+        <img id="gato"
+             alt="Hero Image"
+             src="assets/images/hero-image/gato-image.svg"
+             width="552" height="460"
              loading="eager"/>
       </div>
     </section>
