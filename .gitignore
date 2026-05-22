@@ -1,0 +1,6 @@
+# OS files
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
